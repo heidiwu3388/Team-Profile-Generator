@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^29.3.1"
+  },
+  "name": "team-profile-generator",
+  "description": "Module 10 - Object-Oriented Programming Challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heidiwu3388/Team-Profile-Generator.git"
+  },
+  "author": "Heidi Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heidiwu3388/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/heidiwu3388/Team-Profile-Generator#readme"
+}
