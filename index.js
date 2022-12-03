@@ -1,14 +1,15 @@
 const inquirer = require("inquirer");
+const chalk = require("chalk");
+const fs = require("fs");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Team = require("./lib/Team");
+const renderHTML = require("./lib/renderHTML");
 const {questionsForManager, 
     questionsForEngineer, 
     questionsForIntern,
-    questionForContinue,
-    questiionForContinue} = require("./lib/questions");
-const chalk = require("chalk");
+    questionForContinue} = require("./lib/questions");
 
 // create a new empty team
 var team = new Team;
@@ -20,7 +21,7 @@ function buildTeam() {
     console.log(chalk.blue("******************************************"));
     console.log(chalk.blue("* Welcome to the Team Profile Generator! *"));
     console.log(chalk.blue("******************************************"));
-    console.log(chalk.red("Let's build your team now:"));
+    console.log(chalk.green("Let's build your team now:"));
     
     inquirer.prompt(questionsForManager)
     .then ((answers) => {
@@ -38,8 +39,17 @@ function askToContinue() {
         } else if (answers.choice === "Intern") {
             askInternInfo();
         } else {
-            console.log(team.getAllMembers());
-            process.exit(0);
+            // render HTML using the team member information
+            html = renderHTML(team.members);
+            // write HTML to file
+            fs.writeFile("./dist/index.html", html, (error) => {
+                if (error) {
+                    console.log(chalk.red("Write file error: ", error));
+                } else {
+                    console.log(chalk.green("HTML generated successfully in the ./dist/ folder!!!!"));
+                }
+                process.exit(0);
+            });
         }
     })
 }
@@ -49,9 +59,8 @@ function askEngineerInfo() {
     .then ((answers) => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
         team.addMember(engineer);
-        return;
+        askToContinue();
     })
-    .then (askToContinue);
 }
 
 function askInternInfo() {

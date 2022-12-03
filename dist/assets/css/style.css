@@ -1,13 +1,13 @@
 :root {
     --lightest: white;
-    --lighter: #dadada;
-    --light: #777777;
-    --medium: #555555;
-    --dark: #222222;
+    --lighter: #F0EAD2;
+    --light: #DDE5B6;
+    --medium: #A98467;
+    --dark: #777777;
     --darker: #111111;
     --darkest: #000000;
-    --bright: red;
-    --primary: rgb(81, 81, 249);
+    --bright: #ADC178;
+    --primary: #6C584C;
 }
 
 header {
@@ -21,6 +21,9 @@ header {
     font-size: 3rem;
 }
 
+body {
+    background-color: var(--light);
+}
 .container {
     display: flex;
     flex-direction: row;
@@ -36,7 +39,7 @@ header {
     width: 250px;
     margin: 10px;
     border-radius: 5px 5px 5px 5px;
-    box-shadow: 5px 5px 3px var(--medium);
+    box-shadow: 5px 5px 5px var(--dark);
 }
 .card-header {
     /* flexbox settings */
