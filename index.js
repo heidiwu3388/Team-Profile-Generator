@@ -52,7 +52,7 @@ function askToContinue() {
                 if (error) {
                     console.log(chalk.red("Write file error: ", error));
                 } else {
-                    console.log(chalk.green("HTML and CSS are generated successfully in the ./dist/ folder!!!!"));
+                    console.log(chalk.green("The HTML file is generated successfully in the ./dist/ folder!!!!"));
                 }
                 // exit the application
                 process.exit(0);
